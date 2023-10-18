@@ -37,6 +37,8 @@ function MainPage({ navigation }) {
   const [networkType, setNetworkType] = useState();
   const [ipAddress, setIpAddress] = useState("");
 
+  const [addition, setAddition] = useState();
+
   //   useEffect(() => {
   //     const initializeP2P = async () => {
   //       try {
@@ -104,8 +106,9 @@ function MainPage({ navigation }) {
       console.log("address?", state.details);
     });
 
+    setAddition({ unsubscribe, ipAddress });
     // Unsubscribe
-    unsubscribe();
+    // unsubscribe();
   }, []);
 
   const getImageFromCamera = () => {
@@ -139,6 +142,8 @@ function MainPage({ navigation }) {
       if (localUri) {
         Alert.alert("Saved!");
       }
+
+      Alert.alert(JSON.stringify(addition));
     } catch (e) {
       console.log(e);
     }
